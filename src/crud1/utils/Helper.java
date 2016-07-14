@@ -13,16 +13,23 @@ import static crud1.Constants.*;
  *  HTML code helper generator
  */
 public class Helper {
+    /**
+     *  Generates HTML HREF
+     */
     public static String href(String href, String description) {
         return "<a href=\"" + href + "\">" + description + "</a>";
     }
-
+    /**
+     *  Generates HTML DIV into outputstream with specified TEXT and ALIGN
+     */
     public static void printDiv(PrintWriter out, String text, String align) {
         out.println("        <div style=\"width: 768px; padding: 2px;text-align: " + align + "; background: #EEF4FF; \">\n"
                 + "              " + text
                 + "        </div>\n");
     }
-
+    /**
+     *  Generates GET QUERY for a reference
+     */
     public static String queryBuilder(String mode, int pageNumber, int parentId, String editMode, ItemType editItemType, int editId) {
         StringBuilder query = new StringBuilder("?");
         if (mode != null) query.append(QUERY_PARAMETER_MODE + "=").append(mode);
@@ -39,7 +46,9 @@ public class Helper {
         }
         return query.toString();
     }
-
+    /**
+     *  Generates HTML edit or create item form
+     */
     public static void showEditForm(String formEditMode, ItemType formEditItemType, PageParameters parameters, Item viewItem) {
         int pageNumber = parameters.getPageNumber();
         int parentId = parameters.getParentId();

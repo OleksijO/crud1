@@ -69,7 +69,7 @@ public abstract class AbstractPageTemplate implements PageTemplate {
     }
 
     @Override
-    public void showBottom() {
+    public void showFooter() {
         out.println(
                 "        <hr>\n" +
                         "        <br\n" +
@@ -85,7 +85,7 @@ public abstract class AbstractPageTemplate implements PageTemplate {
     public void show() {
         showHeader();
         showBody();
-        showBottom();
+        showFooter();
     }
 
     protected void print(String text) {
@@ -110,11 +110,6 @@ public abstract class AbstractPageTemplate implements PageTemplate {
     @Override
     public Data getData() {
         return data;
-    }
-
-    @Override
-    public void setData(Data data) {
-        this.data = data;
     }
 
 }

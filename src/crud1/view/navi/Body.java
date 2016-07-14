@@ -72,10 +72,4 @@ public class Body extends AbstractPageTemplate {
         print("<hr color=blue size=1>");
 
     }
-
-
-    @Override
-    public void setData(Data data) {
-        this.data=data;
-    }
 }
