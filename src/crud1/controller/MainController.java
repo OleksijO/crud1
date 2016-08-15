@@ -3,9 +3,9 @@ package crud1.controller;
 import crud1.Logger.Logger;
 import crud1.dto.PageParameters;
 import crud1.dto.PageParametersDTO;
-import crud1.model.RealModel;
 import crud1.model.Model;
-import crud1.view.*;
+import crud1.model.RealModel;
+import crud1.view.Page;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -20,20 +20,18 @@ import static crud1.Constants.*;
 
 @javax.servlet.annotation.WebServlet(name = "MainController")
 public class MainController extends javax.servlet.http.HttpServlet {
-    private Model model;
-    private PageParameters parameters;
 
     @Override
     public void init() throws ServletException {
         super.init();
         Logger.setServletContext(getServletContext());
-        model = RealModel.getInstance();
         Logger.log("Application initiated...");
     }
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        parameters = new PageParametersDTO(request, response);
+        PageParameters parameters = new PageParametersDTO(request, response);
+        Model model = RealModel.getInstance();
         Logger.log("HTTP\t"+request.getMethod()+"\t query string:\t"+request.getQueryString());
         Page resultPage = null;
         switch (parameters.getMode()) {
